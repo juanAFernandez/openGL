@@ -1,0 +1,3 @@
+Que se construya un cuarto de objeto, medio, una cuarta parte o completo.
+Además que tenga los punt iniciales y finales sobre el eje y, solo el inicial, solo el final o ninguno de los dos.
+Las rotaciones siempre sobre el eje Y

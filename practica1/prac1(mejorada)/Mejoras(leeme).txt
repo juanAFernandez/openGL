@@ -1,0 +1,14 @@
+1.
+
+En la versión anterior del código prac1 declarábamos el vector de vértices y el vector de caras dentro de la función 
+draw_objets() así como la lectura de los ficheros .ply.
+Si ponemos una salida de prueba por terminal para ver el número de veces que se llama a esta función vemos que se hace
+dos veces solo con pintar los vertices sin mostrar nada más con la forma en la que se ha programado.
+
+Esto no es lógico pues cada vez que se quiere pintar un objeto distinto o  cada vez que se mueve la cámara por ejemplo
+se vuelve a leer el fichero del objeto, esto es una redundez ya que los datos no han cambiado y no tenemos por qué estar
+leyendolos cada vez.
+
+Para solucionar esto vamos a leer los ficheros fuera de esta función y almacenaremos los datos en estructuras para luego usarlas
+como queramos.
+

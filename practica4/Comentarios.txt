@@ -1,0 +1,82 @@
+Explicación de la parte de ILUMINACION, de forma general. También no podemos descargar el fichero del grupo C donde va 
+también algo explicado.
+
+Conceptos generales.
+
+¿Qué quremos hacer?
+Ya sabemos construir cosas más o menos complejas y sabemos animarlas. Aún nos queda mejorar el aspecto de la visualización y
+para eso vamos a iluminar la escena. Lo que hasta ahora conociamos como color del objeto se va a conocer como material del objeto.
+
+Para esto necestamos usar las normales, definir los puntos de luz, definir un modelo de reflexión, etc...
+
+¿Cómo modelamos la reflexión de la luz de los objetos?
+Si nos olvidamos de los colores solo tendríamos que modelar la intensidad, de 1 a 0, como forma más simple. Debido a tu orientación, 
+a la posición del observador, al punto de la luz y del material el color es tal. 
+
+El modelo de openGL es el más sencillo que hay:
+
+Difuso puro y especular puro.
+
+difusión, pared.
+
+reflexión , espejo.
+
+Entonces tenemos que calcular una intensidad que depende de tres componente: ambiental+difusa+ambiental
+
+
+La más sencilla de ver es la componente difusa, nos vamos a quedar con la componente geométrica. Dada una fuente de luz cuanto
+más perpendicular esté la normal a la fuente de luz más intensidad le llegará, por tanto será 1 y cuando la normal está al contrario
+le llegará 0.
+Para esto usamos una función, que dice, dada la normal y la fuente de luz, (figura a) que forman un ángulo, si el ángulo es 0
+la reflexión es máxima y cuando es 90 vale 1. ¿A que le pasa esto? Al coseno. El coseno modela lo que pasa con esto. 
+Al incidir la luz, se refleja en todas partes, por eso no depende de la posición (se tratará así) del observador.
+
+Esta última nos dice la orientación del objeto respecto a la posición de la fuente.
+
+Por eso también dependemos de exista una fuente luminosa, habiendo luz, ¿que nos falta? El objeto, las características del objeto,
+la reflectividad del material, que es una constante que dice que, puede llegar luz, pero con cuanta me quedo.
+
+
+Parte especular, un objeto de este tipo cuando le llega un rayo de luz lo refleja, figura b, con el mismo ángulo de entrada,
+como lo que ocurre con un laser y un espejo (en el caso de un reflector ideal).
+
+El detalle, para que se vea el espectador tiene que estar en el mismo ángulo que el reflejo , es decir beta tiene que valer 0. 
+La historia es que el rayo llega y hace una pequeña focal, se abre. El reflejo va a depender del ángulo que forme esto.
+Ahora en vez de trabajar con la normal y l trabajamos con r y la o del reflejo y el observador.
+
+
+
+Componente ambiental.
+
+
+El modelo de iluminaciónd e OPENGL es local, no se tiene en cuenta el efecto que producen el resto de objetos. La luz al interactuar
+con los distintos objetos provocan otras fuentes de luz y eso en un modelo general se debe tener en cuenta.
+En nuestro caso, al ser local, no lo vamos a tener en cuenta. Detalle, figura 3. Explicado en papel.
+
+
+
+Todo esto nos dará realismo.
+
+
+
+Cuestiones de implementación:
+
+Se trata de una suma de componentes, cabe la posibilidad de que cada una de resultados entre 0 y 1, y que la suma pueda llegar a
+3 y la intensidad en OpenGL va entre 0-1. ¿Qué pasa? Si siempre nos salen valores mayores a uno se nos verá blanco completamente.
+
+El error es asignar unas variables tan altas que saturamos la intensidad, la soluciónes forzar a que llegue como mucho a 1.
+Para eso nos olvidamos de las componentes fijandonos solo en la difusa. Entonces le damos valores de color entre 0.5 y 0.7
+graduando a nuestro gusto. Una vez sol añadimos las dos componentes con 0.1 y 0.2 o viceversa hasta que conseguimos que 
+la saturación no se llegue.
+Por eso hay que empezar por la difusa e ir añadiendo.
+
+
+Sobre la normal.
+
+Para la visibilidad y en caso de serlo para el color. figura c 
+
+
+
+
+
+

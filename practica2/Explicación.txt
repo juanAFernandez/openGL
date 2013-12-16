@@ -1,0 +1,245 @@
+Sobre la 1ª:
+
+* En el darw objects que se hace muchas veces por segundo cogemos y metemos el leer el ply, ¿tiene sentido? que cada vez que voy
+a dibujar lea el fichero... NO.
+Hay que sacar el read_ply del draw_objets()...
+
+* Ausencia de clases. Si decidimos usar clases, hacerlo bien.
+
+* Optimización ausente completamente.
+
+* Sobre lo de como hacer alusión a los Vertices, Vertices[584].z   o Vertices[584][2], el primero es más legible.
+
+En el correo se explicarán con más detalle.
+
+
+Explicación práctica 2:
+
+Los "objetos" tenemos que usarlos como objetos de clases. Con sus datos como el vector o con sus funciones como pintar.
+
+¿Cómo crear un sólido por revolución? Olvidándonos del peon.
+
+Tenemos un perfil, construido con un conjutno de vertices, que giramos obteniendo una figura de simetría radial. Dependiendo del
+número de cortes obtenemos un objeto u otro. Los mínimos cortes son 3. Si metemos 70, pe, parece un sólido. Si es un cuadrado
+parecerá un cilindro y si es un triángulo parecerá un cono.
+
+¿Modelo? Representación del objeto mediante sus puntos y sus conexiones.
+
+Si hemos hecho esto bien será una clase con sus vectores de vertices y extendida además añadiendo caras.
+
+OpenGl NO TIENE CAPACIDAD PARA REPRESENTAR LINEAS CURVAS.
+
+-> Tengo un perfil y tengo que rotarlo respecto a un eje, así voy obteniendo la forma. Simetría radial.
+Mando el perfil, los puntos, y tengo que girarlos respecto al eje Y, tengo que rotarlo.
+Por ejemplo en un cuadrado, V1,V2,V3,V4 los vertices sup iz e inf iz no cambian, siguen en el mismo sitio y se quedan fijos, 
+aunque no son el mismo, son puntos diferentes, no son el mismo punto. Parto de 4 puntos, en el segundo segmento ya tengo 8 y en 
+tercero 12 puntos aunque 6 son 3 a 3 iguales.
+
+Lo que hacemos es dividir el círculo en N partes. Cogemos la ecuación del círculo y elegimos las veces que tenemos que cortar.
+Esta función es:
+
+X=R·cos(alfa)
+Z=R·sen(alfa)
+
+De la Y nos olvidamos porque no cambia.
+
+Para usar esa ecuación nos falta el radio, puesto que la Z vale 0 (lo miramos desde arriba) lo que nos queda es la distancia de x=0 al 
+punto que tenga mas al extremo. Es decir x=Radio y sirve para ambas partes de la ecuación.
+
+for(=0 hasta el número de divisiones), calculo en angulo y me sale las nuevas coordenadas x,z.
+
+
+Me llega el perfil, lo meto en el vector de vertices. Entonces para las sucesivas divisiones, partes, cogemos y los añadimos
+al vector del nuevo objeto. Al final con el cuadrado son 12 puntos y construir esto es bastante fácil y supone la parte sencilla.
+
+
+Parte dificil: usamos los procedimientos de dibujo añadiendolos a la clase que vamos a crear que diseñamos en la práctica anterior.
+
+Lo que tenemos que resolver para poder el sólido nos encontramos con que nos falta la topología (las caras que relacionana los vertices)
+
+
+
+-->
+
+
+
+¿Cómo creo el conjunto de triángulos que forman el objeto?
+Haciéndolo en papel vemos que con el cuadrado arriba y abajo quedan triángulos pero en los lados rectangulos. Tenemos que dividir
+estos rectángulos en triángulos.
+Lo complicado es transformar esta idea en un procedimiento.
+
+Ayuda:
+
+***
+1º Intentar plasmarlo en papel antes de programar.
+2º La idea:
+
+No ver el problema en 3D, para utomatizar la generación de caras hay que plantearse esto como una estructura de datos.Nos 
+imaginamos que la figura está hecha con un material con el que pudieramos cortar un segmento y estiramos la piel. Como se hace 
+con la tierra y los mapa mundi.Un procedimiento mecánico. Vamos a pasar de la complejidad 3D a una malla bidimensional.
+Hay cosas que se entienden mejor en el plano que en 3D. Al abrir la figura, en los dos sentidos, también la abrimos de la otra 
+manera, quedandonos completamente un plano vemos que la curva generatriz nos da una linea de puntos.  · · · ·
+Ahora lo vemos en 2D. El siguiente corte al abrir nos da:
+
+· · · 
+· · · 
+· · · 
+· · ·
+
+
+Al hacer ese "abrir la figura" he convertido el conjunto de cortes en UNA MATRIZ con las que sabemos trabajar. Podemos recorrerla
+y hacer con ella todas las operaciones iterativas que necesitemos.
+
+De esta forma tenemos por ejemplo una cara.
+
+· · · 
+·-·-·
+| | |
+·-·-·
+· · ·
+
+Luego con el módulo podemos extender a:
+
+· · · ·
+·-·-·-·
+| | |\|
+·-·-·-·
+· · · ·
+
+Ya tengo las caras y divididas en triángulos, al final nos puede quedar algo así:
+
+·-·-·-*
+|\|\|\|		Así solo tenemos que recorrer: PARA TODAS LAS FILAS QUE DEPENDEN DEL NÚMERO QUE VA EN EL PERFIL,
+·-·-·-*						PARA CADA COLUMNA TENGO QUE HACER EL NÚMERO DE DIVISIONES. UN FOR ANIDADO CON OTRO.
+|\|\|\|						Cuando tengo una i y una j tengo que "CREAR" una cara, los índices de los vértices.
+·-·-·-*						Para una i y una j ¿cuántas caras tengo que crear?: ¡¡ DOS CARAS !!
+|\|\|\|						Como una tiene que ser la primera y otra la segunda al final me doy cuenta que
+·-·-·-*						tengo que crear una cara par y otra impar.
+
+Los * es porque son los mismos que los pirmeros (recordar simil mapa mundi, la linea de la izq se supone que es la misma que la der).
+
+
+for(
+
+	for(
+
+		crear cara par
+		crear cara impar	
+        )
+)
+
+
+Ojo: los datos se dan normalmente en sentido contrario al reloj.
+*curva generatriz
+
+
+v3 v7 . .
+
+v2 v6 . .
+ 
+v1 v5 . .
+
+vo v4 . . 
+
+C0= v0,v4,v1
+C1= v4,v5,v1
+
+c2= v4,v8,v5
+c3= v8,v9,v5
+
+
+Claro, hay que buscar la fórmula, la regularidad que me relacione la creación de unas caras con otras.
+
+
+Parece que hay un patro, a de c2 es c0 +4 y todos se relacionan. Pero ojo hay que usar el módulo 12, así en 12 se nos va al 0.
+A la hora de construir parece que puedo meter algun tipo de fórmula.
+
+Vale, eso stá muy bien, pero como relacionamos esto con la j y la i de los bucles: es muy sencillo, una operaciones simple
+sobre los índices de los bucles.
+
+Así, moviendome por filas y por columnas genero todas las caras, las añado al vector y puedo dibujarlo como me de la gana usando
+las funciones. 
+
+Entonces en clases está muy bien porque podemos crear un objeto con un vector puntos, y metodos para crear caras con el número 
+de divisiones, pintarlo, etc... así queda muy estructurado y muy bonito.
+
+
+**Esto sin dibujarlo en papel es prácticamente imposible verlo. Hay que dibujar.
+**Hay que pensar en como están puestos los datos, de forma lineal (ED), algo que es unidimensional nosotros vemos que es
+bidimensional.
+
+
+Construcción de objetos: 
+
+¿Que le ocurre a los puntos v3 y v7? Que tienen las mismas coordenadas, estan en el eje y rotan, se quedan en el mismo sitio.
+Eso hace que un triángulo se convierta en una linea (un triángulo degenerado) tres puntos pero con dos en el mismo sitio. Esto
+se debe de intentar solucionar, se ve bien, pero debe de estar bien construido.
+Esto que quiere decir, que las caras impartes tanto arriba como abajo son inútiles. Estamos repitiendo puntos que no son necesarias.
+
+OJO: no existen objetos con más de dos puntos en el objeto Y , SOLO HAY CUATRO CASOS, QUE TENGA DOS PUNTOS, UNO ABAJO, ARRIBA O NINGUNO
+Estas generan "TAPAS" superior, inferio, pueden tener las dos, una o ninguna, entoces formarán cosas parecidas a cilindros 
+cuya forma dependerá de la forma del perfil.
+
+Entonces el algoritmo debe de ser capar de reconocer cuando hay tapas y cuando hay que generarlas o no. Tiene que preguntar
+y saber cuando y cuando no dibujarlas. Por otra parte las tapas también están creadas con triángulos, hay que dibujarlas. Las 
+tapas siempre generan un número de triángulos que es facil de definir.
+
+
+Esto hace que pueda cambiar la forma de hacerlo:
+   ·
+  / \ etc...
+· · · ·
+· · · ·
+  \ / etc.. con el primer y ultimo punto. Hemos generado la tapa inferior.
+   · 
+
+Ahora es un poco más complicado verlo, en la structura final los puntos finales van al principio o al final de la estructura.
+Es neceario añadir una bool que nos diga si existe tapa o no.
+
+Esta forma como se ve es mucho más eficiente, necesita menos caras.
+
+De esta manera, no repito vertices y todos los triángulos están bien formados. !!!!
+
+Eso es lo que tenemos que hacer.
+
+
+
+
+2ª Parte de la práctica: CREAR LAS NORMALES.
+
+Tenemos que crear las normales de los vectores. Para eso hacemos producto vectorial con una formulilla y se va creando.
+Una vez que creamos la normal tenemos que "normalizarla", dividirla por el modulo, es importante,. La normalizaicón viene
+en vertex.h
+Además de la normal de cada cara tenemos que calcular la normal de cada punto. Estoy aproximando objetos curvos por polígonos.
+Cada cara tiene su normal pero también nos puede interesar la normal del vertice. En un vertice tengo caras que confluyen en el
+, entonces tengo normales de cada una. Para calcular la normal del vértice, hayo la media de todas las de las caras. Esa es 
+la aproximación de la normal de las caras confluyentes a vértice.
+
+Entonces tenemos que añadir un vector de normales para las caras y un vector de normales para los vértices. El de las caras tiene
+tantos elementos como caras y el de los vertices tantos elementos como vértices.
+
+Ojo con la media de los vetices, no convertirlo en un proceso cuadrático, convertirlo en un proceso lineal.
+
+
+
+
+
+
+***
+
+En esta segunda se ve mucho más el uso de clases por la necesidad de métodos para los objetos.
+
+
+Sintaxis:
+
+1. Construir geometría.
+2. Construir con triangulos degenerados (facil)
+3. Hacer la versión pro, sin triángulos y menos caras.
+4. Procedimientos de normales.
+5. Visualización general.
+
+
+Volver a cometer los mismos errores en la segunda práctica penalizará. La evolución en la programción contará.
+
+
+

@@ -1,0 +1,8 @@
+Sobre el modelo del coche visto.
+
+Si tengo objetos sencillos mediante la jerarquización puedo construir objetos más complejos. 1.Construir cosas más complejas
+a partir de más sencilla. 2.Reutilización del código.
+
+La manera más óptima es con objetos, pero también se puede hacer mediante funciones y datos.
+
+Cuando hacemos el grafo decimos que un objeto se construye a partir de otros. fig1.
