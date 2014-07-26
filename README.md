@@ -5,4 +5,12 @@ En este repositorio tenemos las prácticas realizadas para la asignatura de Info
 
 Las prácticas se dividen en 6 partes:
 
-1.- 
+1.- Visualización de modelos PLY
+
+2.- Modelos Poligonales
+
+3.- Modelos jerárquicos
+
+4.- Materiales, fuentes de luz y texturas
+
+5.- Interacción
