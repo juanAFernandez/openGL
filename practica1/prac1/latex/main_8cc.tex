@@ -1,0 +1,221 @@
+\hypertarget{main_8cc}{\section{main.\+cc File Reference}
+\label{main_8cc}\index{main.\+cc@{main.\+cc}}
+}
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$windows.\+h$>$}\\*
+{\ttfamily \#include $<$G\+L/glut.\+h$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}user\+\_\+code.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}file\+\_\+ply\+\_\+stl.\+hpp\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cc_a9b7ad4d65a150223cf538ab8dd6317bd}{clear\+\_\+window} ()
+\item 
+void \hyperlink{main_8cc_af9b396b692aa46ba7ffd48d28f1905ab}{change\+\_\+projection} ()
+\item 
+void \hyperlink{main_8cc_aac0de658d992bdff01a8cc06065c1bcd}{change\+\_\+observer} ()
+\item 
+void \hyperlink{main_8cc_a0a236f4909cc881ca1413b078b6631bd}{draw\+\_\+axis} ()
+\item 
+void \hyperlink{main_8cc_a510234391685c122fc0e1daf817f415d}{draw\+\_\+objects} ()
+\item 
+void \hyperlink{main_8cc_a64dd25fa03ac084b0cd583c633f49e53}{draw\+\_\+scene} (void)
+\item 
+void \hyperlink{main_8cc_ad5415072496ea3d9373acf0dc16451ea}{change\+\_\+window\+\_\+size} (int Ancho1, int Alto1)
+\item 
+void \hyperlink{main_8cc_ae37929ade04a55bb53bd366fd188f944}{normal\+\_\+keys} (unsigned char Tecla1, int x, int y)
+\item 
+void \hyperlink{main_8cc_ac82294b959edb3284999c0f4449b8cbd}{special\+\_\+keys} (int Tecla1, int x, int y)
+\item 
+void \hyperlink{main_8cc_a9efe22aaead3a5e936b5df459de02eba}{initialize} (void)
+\item 
+int \hyperlink{main_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{main_8cc_a9255790b9394e098f4a3bb020b763825}{A\+X\+I\+S\+\_\+\+S\+I\+Z\+E} =5000
+\begin{DoxyCompactList}\small\item\em Tamaño de los ejes. \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{main_8cc_a62d6a08bb1b879dcb733ee7c12d7eba0}{Observer\+\_\+distance}
+\begin{DoxyCompactList}\small\item\em variables que definen la posicion de la camara en coordenadas polares \end{DoxyCompactList}\item 
+G\+Lfloat \hyperlink{main_8cc_a9ad7aa10ae4b96ee8e0d0befc46e0342}{Observer\+\_\+angle\+\_\+x}
+\item 
+G\+Lfloat \hyperlink{main_8cc_a92a40873062a6bf329781179e96ea076}{Observer\+\_\+angle\+\_\+y}
+\item 
+int \hyperlink{main_8cc_a80a769ffbed195e9646be97726d7fac7}{E\+S\+T\+I\+L\+O} =0
+\item 
+int \hyperlink{main_8cc_a9cd2c9e18d1943e83493edf94302db5b}{F\+I\+C\+H\+E\+R\+O} =0
+\item 
+bool \hyperlink{main_8cc_abd34ae937ae90265d7aa9feac401b069}{M\+I\+T\+A\+D} =false
+\item 
+int \hyperlink{main_8cc_ac75ef3236eddefc656815d243bd0f215}{E\+S\+P\+E\+C\+I\+A\+L} =0
+\item 
+int \hyperlink{main_8cc_a227bf92957b72bf606d7e059f510c6ec}{E\+S\+P\+E\+C\+I\+A\+L2} =0
+\item 
+G\+Lfloat \hyperlink{main_8cc_a9a6d5bceee8b5603001327ee69f29b1f}{Window\+\_\+width}
+\item 
+G\+Lfloat \hyperlink{main_8cc_a21be4d123a277604058424c46e1d3a0c}{Window\+\_\+height}
+\item 
+G\+Lfloat \hyperlink{main_8cc_ac566cb0ef197ee9f242138983f0e9bac}{Front\+\_\+plane}
+\item 
+G\+Lfloat \hyperlink{main_8cc_ac2f441805017f335408f7f734dfc5429}{Back\+\_\+plane}
+\item 
+int \hyperlink{main_8cc_a976847963dc730d99e17f4fec10652f3}{U\+I\+\_\+window\+\_\+pos\+\_\+x} =50
+\item 
+int \hyperlink{main_8cc_a8c0a4be10a8bd129c871cea302eed924}{U\+I\+\_\+window\+\_\+pos\+\_\+y} =50
+\item 
+int \hyperlink{main_8cc_a92e9f5bc39c5f59b3a740a4d67babb8b}{U\+I\+\_\+window\+\_\+width} =500
+\item 
+int \hyperlink{main_8cc_a83c72fa8e1f0b764f1014644eaa5561e}{U\+I\+\_\+window\+\_\+height} =500
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8cc_aac0de658d992bdff01a8cc06065c1bcd}{\index{main.\+cc@{main.\+cc}!change\+\_\+observer@{change\+\_\+observer}}
+\index{change\+\_\+observer@{change\+\_\+observer}!main.\+cc@{main.\+cc}}
+\subsubsection[{change\+\_\+observer}]{\setlength{\rightskip}{0pt plus 5cm}void change\+\_\+observer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_aac0de658d992bdff01a8cc06065c1bcd}
+\hypertarget{main_8cc_af9b396b692aa46ba7ffd48d28f1905ab}{\index{main.\+cc@{main.\+cc}!change\+\_\+projection@{change\+\_\+projection}}
+\index{change\+\_\+projection@{change\+\_\+projection}!main.\+cc@{main.\+cc}}
+\subsubsection[{change\+\_\+projection}]{\setlength{\rightskip}{0pt plus 5cm}void change\+\_\+projection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_af9b396b692aa46ba7ffd48d28f1905ab}
+\hypertarget{main_8cc_ad5415072496ea3d9373acf0dc16451ea}{\index{main.\+cc@{main.\+cc}!change\+\_\+window\+\_\+size@{change\+\_\+window\+\_\+size}}
+\index{change\+\_\+window\+\_\+size@{change\+\_\+window\+\_\+size}!main.\+cc@{main.\+cc}}
+\subsubsection[{change\+\_\+window\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}void change\+\_\+window\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{int}]{Ancho1, }
+\item[{int}]{Alto1}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_ad5415072496ea3d9373acf0dc16451ea}
+Funcion llamada cuando se produce un cambio en el tamaño de la ventana el evento manda a la funcion\+: nuevo ancho nuevo alto \hypertarget{main_8cc_a9b7ad4d65a150223cf538ab8dd6317bd}{\index{main.\+cc@{main.\+cc}!clear\+\_\+window@{clear\+\_\+window}}
+\index{clear\+\_\+window@{clear\+\_\+window}!main.\+cc@{main.\+cc}}
+\subsubsection[{clear\+\_\+window}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+\_\+window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a9b7ad4d65a150223cf538ab8dd6317bd}
+\hypertarget{main_8cc_a0a236f4909cc881ca1413b078b6631bd}{\index{main.\+cc@{main.\+cc}!draw\+\_\+axis@{draw\+\_\+axis}}
+\index{draw\+\_\+axis@{draw\+\_\+axis}!main.\+cc@{main.\+cc}}
+\subsubsection[{draw\+\_\+axis}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+\_\+axis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a0a236f4909cc881ca1413b078b6631bd}
+\hypertarget{main_8cc_a510234391685c122fc0e1daf817f415d}{\index{main.\+cc@{main.\+cc}!draw\+\_\+objects@{draw\+\_\+objects}}
+\index{draw\+\_\+objects@{draw\+\_\+objects}!main.\+cc@{main.\+cc}}
+\subsubsection[{draw\+\_\+objects}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+\_\+objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a510234391685c122fc0e1daf817f415d}
+\hypertarget{main_8cc_a64dd25fa03ac084b0cd583c633f49e53}{\index{main.\+cc@{main.\+cc}!draw\+\_\+scene@{draw\+\_\+scene}}
+\index{draw\+\_\+scene@{draw\+\_\+scene}!main.\+cc@{main.\+cc}}
+\subsubsection[{draw\+\_\+scene}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+\_\+scene (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a64dd25fa03ac084b0cd583c633f49e53}
+\hypertarget{main_8cc_a9efe22aaead3a5e936b5df459de02eba}{\index{main.\+cc@{main.\+cc}!initialize@{initialize}}
+\index{initialize@{initialize}!main.\+cc@{main.\+cc}}
+\subsubsection[{initialize}]{\setlength{\rightskip}{0pt plus 5cm}void initialize (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a9efe22aaead3a5e936b5df459de02eba}
+\hypertarget{main_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{\index{main.\+cc@{main.\+cc}!main@{main}}
+\index{main@{main}!main.\+cc@{main.\+cc}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a3c04138a5bfe5d72780bb7e82a18e627}
+\hypertarget{main_8cc_ae37929ade04a55bb53bd366fd188f944}{\index{main.\+cc@{main.\+cc}!normal\+\_\+keys@{normal\+\_\+keys}}
+\index{normal\+\_\+keys@{normal\+\_\+keys}!main.\+cc@{main.\+cc}}
+\subsubsection[{normal\+\_\+keys}]{\setlength{\rightskip}{0pt plus 5cm}void normal\+\_\+keys (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{Tecla1, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_ae37929ade04a55bb53bd366fd188f944}
+\hypertarget{main_8cc_ac82294b959edb3284999c0f4449b8cbd}{\index{main.\+cc@{main.\+cc}!special\+\_\+keys@{special\+\_\+keys}}
+\index{special\+\_\+keys@{special\+\_\+keys}!main.\+cc@{main.\+cc}}
+\subsubsection[{special\+\_\+keys}]{\setlength{\rightskip}{0pt plus 5cm}void special\+\_\+keys (
+\begin{DoxyParamCaption}
+\item[{int}]{Tecla1, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_ac82294b959edb3284999c0f4449b8cbd}
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8cc_a9255790b9394e098f4a3bb020b763825}{\index{main.\+cc@{main.\+cc}!A\+X\+I\+S\+\_\+\+S\+I\+Z\+E@{A\+X\+I\+S\+\_\+\+S\+I\+Z\+E}}
+\index{A\+X\+I\+S\+\_\+\+S\+I\+Z\+E@{A\+X\+I\+S\+\_\+\+S\+I\+Z\+E}!main.\+cc@{main.\+cc}}
+\subsubsection[{A\+X\+I\+S\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int A\+X\+I\+S\+\_\+\+S\+I\+Z\+E =5000}}\label{main_8cc_a9255790b9394e098f4a3bb020b763825}
+
+
+Tamaño de los ejes. 
+
+\hypertarget{main_8cc_ac2f441805017f335408f7f734dfc5429}{\index{main.\+cc@{main.\+cc}!Back\+\_\+plane@{Back\+\_\+plane}}
+\index{Back\+\_\+plane@{Back\+\_\+plane}!main.\+cc@{main.\+cc}}
+\subsubsection[{Back\+\_\+plane}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Back\+\_\+plane}}\label{main_8cc_ac2f441805017f335408f7f734dfc5429}
+\hypertarget{main_8cc_ac75ef3236eddefc656815d243bd0f215}{\index{main.\+cc@{main.\+cc}!E\+S\+P\+E\+C\+I\+A\+L@{E\+S\+P\+E\+C\+I\+A\+L}}
+\index{E\+S\+P\+E\+C\+I\+A\+L@{E\+S\+P\+E\+C\+I\+A\+L}!main.\+cc@{main.\+cc}}
+\subsubsection[{E\+S\+P\+E\+C\+I\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}int E\+S\+P\+E\+C\+I\+A\+L =0}}\label{main_8cc_ac75ef3236eddefc656815d243bd0f215}
+\hypertarget{main_8cc_a227bf92957b72bf606d7e059f510c6ec}{\index{main.\+cc@{main.\+cc}!E\+S\+P\+E\+C\+I\+A\+L2@{E\+S\+P\+E\+C\+I\+A\+L2}}
+\index{E\+S\+P\+E\+C\+I\+A\+L2@{E\+S\+P\+E\+C\+I\+A\+L2}!main.\+cc@{main.\+cc}}
+\subsubsection[{E\+S\+P\+E\+C\+I\+A\+L2}]{\setlength{\rightskip}{0pt plus 5cm}int E\+S\+P\+E\+C\+I\+A\+L2 =0}}\label{main_8cc_a227bf92957b72bf606d7e059f510c6ec}
+\hypertarget{main_8cc_a80a769ffbed195e9646be97726d7fac7}{\index{main.\+cc@{main.\+cc}!E\+S\+T\+I\+L\+O@{E\+S\+T\+I\+L\+O}}
+\index{E\+S\+T\+I\+L\+O@{E\+S\+T\+I\+L\+O}!main.\+cc@{main.\+cc}}
+\subsubsection[{E\+S\+T\+I\+L\+O}]{\setlength{\rightskip}{0pt plus 5cm}int E\+S\+T\+I\+L\+O =0}}\label{main_8cc_a80a769ffbed195e9646be97726d7fac7}
+\hypertarget{main_8cc_a9cd2c9e18d1943e83493edf94302db5b}{\index{main.\+cc@{main.\+cc}!F\+I\+C\+H\+E\+R\+O@{F\+I\+C\+H\+E\+R\+O}}
+\index{F\+I\+C\+H\+E\+R\+O@{F\+I\+C\+H\+E\+R\+O}!main.\+cc@{main.\+cc}}
+\subsubsection[{F\+I\+C\+H\+E\+R\+O}]{\setlength{\rightskip}{0pt plus 5cm}int F\+I\+C\+H\+E\+R\+O =0}}\label{main_8cc_a9cd2c9e18d1943e83493edf94302db5b}
+\hypertarget{main_8cc_ac566cb0ef197ee9f242138983f0e9bac}{\index{main.\+cc@{main.\+cc}!Front\+\_\+plane@{Front\+\_\+plane}}
+\index{Front\+\_\+plane@{Front\+\_\+plane}!main.\+cc@{main.\+cc}}
+\subsubsection[{Front\+\_\+plane}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Front\+\_\+plane}}\label{main_8cc_ac566cb0ef197ee9f242138983f0e9bac}
+\hypertarget{main_8cc_abd34ae937ae90265d7aa9feac401b069}{\index{main.\+cc@{main.\+cc}!M\+I\+T\+A\+D@{M\+I\+T\+A\+D}}
+\index{M\+I\+T\+A\+D@{M\+I\+T\+A\+D}!main.\+cc@{main.\+cc}}
+\subsubsection[{M\+I\+T\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}bool M\+I\+T\+A\+D =false}}\label{main_8cc_abd34ae937ae90265d7aa9feac401b069}
+\hypertarget{main_8cc_a9ad7aa10ae4b96ee8e0d0befc46e0342}{\index{main.\+cc@{main.\+cc}!Observer\+\_\+angle\+\_\+x@{Observer\+\_\+angle\+\_\+x}}
+\index{Observer\+\_\+angle\+\_\+x@{Observer\+\_\+angle\+\_\+x}!main.\+cc@{main.\+cc}}
+\subsubsection[{Observer\+\_\+angle\+\_\+x}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Observer\+\_\+angle\+\_\+x}}\label{main_8cc_a9ad7aa10ae4b96ee8e0d0befc46e0342}
+\hypertarget{main_8cc_a92a40873062a6bf329781179e96ea076}{\index{main.\+cc@{main.\+cc}!Observer\+\_\+angle\+\_\+y@{Observer\+\_\+angle\+\_\+y}}
+\index{Observer\+\_\+angle\+\_\+y@{Observer\+\_\+angle\+\_\+y}!main.\+cc@{main.\+cc}}
+\subsubsection[{Observer\+\_\+angle\+\_\+y}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Observer\+\_\+angle\+\_\+y}}\label{main_8cc_a92a40873062a6bf329781179e96ea076}
+\hypertarget{main_8cc_a62d6a08bb1b879dcb733ee7c12d7eba0}{\index{main.\+cc@{main.\+cc}!Observer\+\_\+distance@{Observer\+\_\+distance}}
+\index{Observer\+\_\+distance@{Observer\+\_\+distance}!main.\+cc@{main.\+cc}}
+\subsubsection[{Observer\+\_\+distance}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Observer\+\_\+distance}}\label{main_8cc_a62d6a08bb1b879dcb733ee7c12d7eba0}
+
+
+variables que definen la posicion de la camara en coordenadas polares 
+
+\hypertarget{main_8cc_a83c72fa8e1f0b764f1014644eaa5561e}{\index{main.\+cc@{main.\+cc}!U\+I\+\_\+window\+\_\+height@{U\+I\+\_\+window\+\_\+height}}
+\index{U\+I\+\_\+window\+\_\+height@{U\+I\+\_\+window\+\_\+height}!main.\+cc@{main.\+cc}}
+\subsubsection[{U\+I\+\_\+window\+\_\+height}]{\setlength{\rightskip}{0pt plus 5cm}int U\+I\+\_\+window\+\_\+height =500}}\label{main_8cc_a83c72fa8e1f0b764f1014644eaa5561e}
+\hypertarget{main_8cc_a976847963dc730d99e17f4fec10652f3}{\index{main.\+cc@{main.\+cc}!U\+I\+\_\+window\+\_\+pos\+\_\+x@{U\+I\+\_\+window\+\_\+pos\+\_\+x}}
+\index{U\+I\+\_\+window\+\_\+pos\+\_\+x@{U\+I\+\_\+window\+\_\+pos\+\_\+x}!main.\+cc@{main.\+cc}}
+\subsubsection[{U\+I\+\_\+window\+\_\+pos\+\_\+x}]{\setlength{\rightskip}{0pt plus 5cm}int U\+I\+\_\+window\+\_\+pos\+\_\+x =50}}\label{main_8cc_a976847963dc730d99e17f4fec10652f3}
+\hypertarget{main_8cc_a8c0a4be10a8bd129c871cea302eed924}{\index{main.\+cc@{main.\+cc}!U\+I\+\_\+window\+\_\+pos\+\_\+y@{U\+I\+\_\+window\+\_\+pos\+\_\+y}}
+\index{U\+I\+\_\+window\+\_\+pos\+\_\+y@{U\+I\+\_\+window\+\_\+pos\+\_\+y}!main.\+cc@{main.\+cc}}
+\subsubsection[{U\+I\+\_\+window\+\_\+pos\+\_\+y}]{\setlength{\rightskip}{0pt plus 5cm}int U\+I\+\_\+window\+\_\+pos\+\_\+y =50}}\label{main_8cc_a8c0a4be10a8bd129c871cea302eed924}
+\hypertarget{main_8cc_a92e9f5bc39c5f59b3a740a4d67babb8b}{\index{main.\+cc@{main.\+cc}!U\+I\+\_\+window\+\_\+width@{U\+I\+\_\+window\+\_\+width}}
+\index{U\+I\+\_\+window\+\_\+width@{U\+I\+\_\+window\+\_\+width}!main.\+cc@{main.\+cc}}
+\subsubsection[{U\+I\+\_\+window\+\_\+width}]{\setlength{\rightskip}{0pt plus 5cm}int U\+I\+\_\+window\+\_\+width =500}}\label{main_8cc_a92e9f5bc39c5f59b3a740a4d67babb8b}
+\hypertarget{main_8cc_a21be4d123a277604058424c46e1d3a0c}{\index{main.\+cc@{main.\+cc}!Window\+\_\+height@{Window\+\_\+height}}
+\index{Window\+\_\+height@{Window\+\_\+height}!main.\+cc@{main.\+cc}}
+\subsubsection[{Window\+\_\+height}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Window\+\_\+height}}\label{main_8cc_a21be4d123a277604058424c46e1d3a0c}
+\hypertarget{main_8cc_a9a6d5bceee8b5603001327ee69f29b1f}{\index{main.\+cc@{main.\+cc}!Window\+\_\+width@{Window\+\_\+width}}
+\index{Window\+\_\+width@{Window\+\_\+width}!main.\+cc@{main.\+cc}}
+\subsubsection[{Window\+\_\+width}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lfloat Window\+\_\+width}}\label{main_8cc_a9a6d5bceee8b5603001327ee69f29b1f}

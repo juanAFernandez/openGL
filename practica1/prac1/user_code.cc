@@ -154,6 +154,11 @@ void draw_lineas(vector<double> &Vertices, vector<unsigned long> &Caras, int col
 //**************************************************************************
 // Funcion para dibujar triangulos para el volumen
 //**************************************************************************
+
+/**
+* Putex
+*
+*/
 void draw_triangulos(vector<double> &Vertices, vector<unsigned long> &Caras, int color, bool mitad){
 
     //Para que se vean tambien las lineas y no un solido indescifrable.

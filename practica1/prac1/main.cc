@@ -1,3 +1,7 @@
+/**
+@file main.cpp
+*/
+
 //**************************************************************************
 // Práctica 1
 //
@@ -17,9 +21,9 @@
 
 
 // tamaño de los ejes
-const int AXIS_SIZE=5000;
+const int AXIS_SIZE=5000; ///< Tamaño de los ejes.
 
-// variables que definen la posicion de la camara en coordenadas polares
+/// variables que definen la posicion de la camara en coordenadas polares
 GLfloat Observer_distance;
 GLfloat Observer_angle_x;
 GLfloat Observer_angle_y;
@@ -45,7 +49,7 @@ int UI_window_pos_x=50,UI_window_pos_y=50,UI_window_width=500,UI_window_height=5
 //
 //***************************************************************************
 
-void clear_window()
+void clear_window()  ///<Este método hace algo super chulo.
 {
 
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -190,18 +194,13 @@ glutSwapBuffers();
 
 
 
-//***************************************************************************
-// Funcion llamada cuando se produce un cambio en el tamaño de la ventana
-//
-// el evento manda a la funcion:
-// nuevo ancho
-// nuevo alto
-//***************************************************************************
-
-void change_window_size(int Ancho1,int Alto1)
-{
+/**
+ Funcion llamada cuando se produce un cambio en el tamaño
+de la ventana. El evento manda a la funcion: nuevo ancho y nuevo alto
+*/
+void change_window_size(int nuevoAncho,int nuevoAlto){
 change_projection();
-glViewport(0,0,Ancho1,Alto1);
+glViewport(0,0,nuevoAncho,nuevoAlto);
 glutPostRedisplay();
 }
 
