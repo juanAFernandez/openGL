@@ -1,5 +1,14 @@
-/**
-@file main.cpp
+/** @file main.cpp
+ *  @brief Function prototypes for the console driver.
+ *
+ *  This contains the prototypes for the console
+ *  driver and eventually any macros, constants,
+ *  or global variables you will need.
+ *
+ *  @author Domingo Martin Perandres
+ *  @author Fred Hacker (fhacker)
+ *  @bug No known bugs.
+ *
 */
 
 //**************************************************************************
